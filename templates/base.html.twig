@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150456259-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-150456259-1');
+    </script>
+    <meta charset="UTF-8">
+    <title>
+      {% block title %}BaseDev
+      {% endblock %}
+    </title>
+    {% block stylesheets %}
+      <link crossorigin="anonymous" href="https://bootswatch.com/4/united/bootstrap.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+      <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+      <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet"/>
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <a id='secure' href="{{path('admin_property')}}">LOGIN</a>
+      <h2>Gîtes le Bois Sébille</h2>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Gîte Le Bois Sébille</a>
+      <button aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor03" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('blog') }}">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('gites')}}">Réserver</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('miniferme') }}">Mini-Ferme</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/activite">Activité</a>
+            </li>
+            {% if app.user %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Déconnexion</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    {% block body %}{% endblock %}
+    <footer
+      class="page-footer font-small pt-4" id="footer">
+
+      
+      <div
+        class="container-fluid text-center text-md-left">
+
+        <div
+          class="row">
+
+          <div
+            class="col-md-6 mt-md-0 mt-3">
+
+            <h5 class="text-uppercase">Gîte Le Bois Sébille</h5>
+            <p>Merci de la visite du site et à bientôt</p>
+
+          </div>
+
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <div
+            class="col-md-3 mb-md-0 mb-3">
+            <ul class="list-unstyled">
+                <li id="padd">
+                  <a href="https://www.facebook.com/gite.leboissebille"><img src="{{ asset('css/fb.png') }}" width="75vw" height="75vh"></a>
+                  
+                  <a href="https://www.gites-de-france.com/fr"><img src="{{ asset('css/th.jpg') }}" width="75vw" height="75vh"></a>
+                   
+                  <a href="https://www.booking.com/hotel/fr/le-gite-du-bois-sebille.fr.html?aid=397594;label=gog235jc-1DCAEoggI46AdIDVgDaE2IAQGYAQ24ARfIAQzYAQPoAQH4AQKIAgGoAgO4Aqmesu0FwAIB;sid=51d751f0efb5aa0e50132a85f28bc367;dest_id=-1475502;dest_type=city;dist=0;group_adults=2;group_children=0;hapos=1;hpos=1;no_rooms=1;room1=A%2CA;sb_price_type=total;sr_order=popularity;srepoch=1571589944;srpvid=b00675dccfa10175;type=total;ucfs=1&#hotelTmpl"><img src="{{ asset('css/booking.png') }}" width="75vw" height="75vh"></a>
+                </li>
+            </ul>
+          </div>
+          </hr>
+        </div>
+      </div>
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="">
+          Gîte Le Bois Sébille</a>
+      </div>
+      
+
+    </footer>
+    
+
+    {% block javascripts %}
+      <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <script src="main.js"></script>
+    {% endblock %}
+
+  </body>
+</html>

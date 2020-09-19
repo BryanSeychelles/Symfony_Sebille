@@ -1,0 +1,92 @@
+{% extends 'base_miniferme.html.twig' %}
+{% block body %}
+<div id="prise" class="row">
+  {% for animal in animals %}
+  <div class="col-md-4">
+  <div class="card mb-4">
+    <div id="modif" class="card-body" style="background-image: url('{{vich_uploader_asset(animal,"imageFile")}}')">
+      <h5 class="card-title">
+          {{animal.Name}}
+          <br>
+          {{animal.age}}
+          <br>
+          {{animal.race}}
+      </h5>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+  <footer id="pied"
+  class="page-footer font-small pt-4" id="footer">
+
+  <!-- Footer Links -->
+  <div
+    class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div
+      class="row">
+
+      <!-- Grid column -->
+      <div
+        class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Gîte Le Bois Sébille</h5>
+        <p>Merci de la visite du site et à bientôt</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr
+      class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div
+        class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+            <li>
+              <a href="https://www.facebook.com/gite.leboissebille"><img src="{{ asset('css/fb.png') }}" width="75vw" height="75vh"></a>
+            </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div
+        class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="https://www.gites-de-france.com/fr"><img src="{{ asset('css/th.jpg') }}" width="75vw" height="75vh"></a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="">
+      Gîte Le Bois Sébille</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+{% endblock %}

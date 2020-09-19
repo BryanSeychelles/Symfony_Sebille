@@ -1,0 +1,17 @@
+{% extends 'base_edit.html.twig' %}
+{% block title %}Editer un Bien
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="container md-4">
+{% form_theme formGites 'bootstrap_4_layout.html.twig' %}
+
+{{form_start(formGites)}}
+
+{{form_widget(formGites)}}
+
+<button class="btn btn-primary">{{button|default('Enregistrer')}}</button>
+{{form_end(formGites)}}
+</div>
+{% endblock %}

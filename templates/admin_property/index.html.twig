@@ -1,0 +1,51 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}AdminProperty
+{% endblock %}
+
+{% block body %}
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Titre</th>
+        <th scope="col">Date de Création</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for article in articles %}
+          <th scope="row">{{ article.titre }}</th>
+          <td>{{ article.updatedAt | date('d/m/Y') }}
+            à
+            {{ article.updatedAt | date('H:i') }}
+          </td>
+
+          <td>
+            <a class="btn btn-primary" href="{{ path('admin_edit', {'id': article.id }) }}">Editer</a>
+            <form method="post" action="{{path('admin_delete', {'id': article.id})}}" style="display: inline-block" onsubmit="return confirm('Êtes vous sûr ?')">
+              <input
+              name="_method" type="hidden" value="DELETE">
+              {# <input type="hidden" name="_token" value="{{ csrf_token('delete' - article.id) }}"> #}
+              <button class="btn btn-danger">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <button class="btn btn-primary" id="sucre">
+            <a class="nav-link" href="{{path('admin_create')}}">Créer un article</a>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

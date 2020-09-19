@@ -1,0 +1,17 @@
+{% extends 'base_edit.html.twig' %}
+{% block title %}Editer Animal
+{% endblock %}
+
+{% block body %}
+<br><br><br>
+<div class="container md-4">
+{% form_theme formAnimals 'bootstrap_4_layout.html.twig' %}
+
+{{form_start(formAnimals)}}
+
+{{form_widget(formAnimals)}}
+
+<button class="btn btn-primary">{{button|default('Sauvegarder')}}</button>
+{{form_end(formAnimals)}}
+</div>
+{% endblock %}

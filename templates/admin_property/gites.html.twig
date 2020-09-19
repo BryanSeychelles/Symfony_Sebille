@@ -1,0 +1,87 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}
+Gites
+{% endblock %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+  {{ message }}
+</div>
+{% endfor %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Gîtes</font>
+          </font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Chambres</font>
+          </font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Surface</font>
+          </font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Douche</font>
+          </font>
+        </th>
+        <th scope="col">
+          <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Actions</font>
+          </font>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for gite in gites %}
+      <tr class="table-active">
+          <th scope="row">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">{{ gite.name}}</font>
+            </font>
+          </th>
+          <td>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">{{gite.chambres}}</font>
+            </font>
+          </td>
+          <td>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">{{gite.surface}}</font>
+            </font>
+          </td>
+          <td>
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">{{gite.douches}}</font>
+            </font>
+          </td>
+          <td>
+            <a class="btn btn-primary" href="{{path('admin_edit_gites', {'id': gite.id })}}">Editer</a>
+            {# <form method="post" action="{{path('admin_delete_gites', {'id': gite.id})}}" style="display: inline-block" onsubmit="return confirm('Êtes vous sûr ?')">
+                <input
+                name="_method" type="hidden" value="delete">
+                 <input type="hidden" name="_token" value="{{ csrf_token('delete' - gite.id) }}"> 
+                <button class="btn btn-danger">Supprimer</button>
+              </form>#}
+            </td>
+          </td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td>
+          <button class="btn btn-primary" >
+            <a class="nav-link" href="{{ path('admin_create_gites')}}">Créer un gîtes</a>
+          </button>
+        </td>
+      </tr>
+    </table>
+  {% endblock %}

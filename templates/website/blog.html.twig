@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}Blog
+{% endblock %}
+
+{% block body %}
+
+  <section class="container md-4" id="section">
+    {% for article in articles %}
+      <br>
+      <div id="article">
+        <div id="article" style="background-image: url('{{vich_uploader_asset(article,"imageFile")}}')">
+          <table id="un">
+          <tr>
+            <th>
+              <h1>{{ article.titre }}</h1>
+            </th>
+            <th>
+              {{ article.updatedAt | date('d/m/Y') }}
+              à
+              {{ article.updatedAt | date('H:i') }}</th>
+            <th>
+              <a class="btn btn-primary" href="{{ path('blog_show', {'id': article.id }) }}">lire</a>
+            </th>
+          </tr>
+        </table>
+      </div>
+    {% endfor %}
+    </section>
+    {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Booking index{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>BeginAt</th>
+                <th>EndAt</th>
+                <th>Title</th>
+                <th>Gites</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ booking.beginAt ? booking.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ booking.title }}</td>
+                <td>{{ booking.gites.name }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('booking_show', {'id': booking.id}) }}">voir</a>
+                    <a class="btn btn-primary" href="{{ path('booking_edit', {'id': booking.id}) }}">éditer</a>
+                    {{ include('booking/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('booking_new') }}">Créer réservation</a>
+    <a class="btn btn-primary" href="{{ path('booking_home') }}">Calendrier</a>
+
+
+{% endblock %}

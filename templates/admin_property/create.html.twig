@@ -1,0 +1,10 @@
+{% extends 'base_edit.html.twig' %}
+{% block title %}Editer un article
+{% endblock %}
+{% block body %}
+  <div class="container-8" id="body">
+    <div class="container" id="prince">
+      <h1>Créer l'article</h1>
+      {{ include("admin_property/form.html.twig", {form: form,button:"Publier"}) }}
+
+    {% endblock %}

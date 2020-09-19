@@ -1,0 +1,36 @@
+{% extends 'base_edit.html.twig' %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body %}
+    <h1><center>Booking</center></h1>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ booking.id }}</td>
+            </tr>
+            <tr>
+                <th>BeginAt</th>
+                <td>{{ booking.beginAt ? booking.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EndAt</th>
+                <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ booking.title }}</td>
+            </tr>
+            <tr>
+              <th>Gîtes</th>
+              <td>{{ booking.gites.name }}</td>
+          </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('booking_edit', {'id': booking.id}) }}">Editer</a>
+
+    {{ include('booking/_delete_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}commentaires
+{% endblock %}
+
+{% block body %}
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Date de Création</th>
+        <th scope="col">Contenu</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for commentaire in commentaire %}
+          <th scope="row">{{ commentaire.email }}</th>
+          <td>{{ commentaire.createdAt | date('d/m/Y') }}
+            à
+            {{ commentaire.createdAt | date('H:i') }}
+          </td>
+          <th scope="row">{{ commentaire.contenu }}</th>
+          <td>
+            <form method="post" action="{{path('admin_delete_comments', {'id': commentaire.id})}}" style="display: inline-block" onsubmit="return confirm('Êtes vous sûr ?')">
+              <input
+              name="_method" type="hidden" value="DELETE">
+              {# <input type="hidden" name="_token" value="{{ csrf_token('delete' - article.id) }}"> #}
+              <button class="btn btn-danger">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

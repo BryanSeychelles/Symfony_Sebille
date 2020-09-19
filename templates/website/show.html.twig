@@ -1,0 +1,93 @@
+{% extends "base.html.twig" %}
+{% block title %}
+  Articles
+{% endblock %}
+
+{% block body %}
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  <div class="jumbotron">
+    <h1 class="display-3">
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">
+          {{article.titre}}</font>
+      </font>
+    </h1>
+    <p class="lead">
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">
+          {{article.updatedAt | date('d/m/Y')}}
+          à
+          {{article.updatedAt | date('H:i')}}</font>
+      </font>
+    </p>
+    <hr class="my-4">
+    <p>
+      <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">
+          <table>
+            <tr>
+              <td id="gauche">
+                <img alt="" src="{{vich_uploader_asset(article,'imageFile')}}">
+              </td>
+              <td id="droite">
+                {{article.contenu | raw}}
+              </td>
+            </tr>
+          </table>
+        </font>
+      </font>
+    </p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">
+            Apprendre encore plus
+          </font>
+        </font>
+      </a>
+    </p>
+  </div>
+  <div class="container md-4" id="putu">
+    <h4>COMMENTAIRE :</h4>
+    {% for commentaire in article.commentaires %}
+      <br>
+      <table id="bhoe">
+        <tr>
+          <th>
+            {{ commentaire.email }}</th>
+          <th>
+            {{ commentaire.createdAt | date('d/m/Y') }}
+            à
+            {{ commentaire.createdAt | date('H:i') }}</th>
+        </tr>
+        <tr>
+          <td>{{ commentaire.contenu }}</td>
+        </tr>
+        <tr>
+          <td>{{ commentaire.note }}</td>
+        </tr>
+      </table>
+    {% endfor %}
+  </div>
+
+  <br><br>
+
+  <div class="container md-4" id="com">
+    <h4>Laissez un commentaire :</h4>
+    {% form_theme formCom 'bootstrap_4_layout.html.twig' %}
+
+    {{form_start(formCom)}}
+
+    {{form_widget(formCom)}}
+
+    <button class="btn btn-primary">{{button|default('Enregistrer')}}</button>
+    {{form_end(formCom)}}
+  </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gîtes{% endblock %}
+
+{% block body %}
+
+<section class="france">
+    <table id="fix" class="table table-hover"> 
+        <thead>
+          <tr>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Name</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Surface</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chambres</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Douches</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dressings</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lits</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Disponibilité</font></font></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-active">
+              <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{gite.name}}</font></font></th>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{gite.surface}}</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{gite.chambres}}</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{gite.douches}}</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gite.dressing }}</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ gite.lits }}</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">              
+                <a id="see" class="btn btn-primary" href="/calendar">Réserver</a>
+              </font></font></td>
+            </tr>
+            <div id="gites_des">
+              <H1>Description</H1>
+              <hr>
+              <h5>{{gite.description}}</h5>
+            </div>
+        </tbody>
+  </table>
+  <section class="container md-4" class="bgslide">
+    <div id="slider">
+        <figure>
+            {% for image in gite.images %}
+            <img class="{{ image.name }}" src="{{vich_uploader_asset(image, 'imageFile')}}">
+            {% endfor %}        
+        </figure>
+      </div>
+  </section>
+</section>
+{% endblock %}
